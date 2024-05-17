@@ -1,0 +1,13 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+setopt autocd beep
+bindkey -e
+
+zstyle :compinstall filename '/Users/y/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+alias config='/usr/bin/git --git-dir=/Users/y/.cfg/ --work-tree=/Users/y'
