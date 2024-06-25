@@ -33,3 +33,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+vim.keymap.set('n', '<leader>fo', function()
+  require('telescope.builtin').find_files {
+    cwd = require('oil').get_current_dir(),
+  }
+end, { desc = 'oil cwd' })

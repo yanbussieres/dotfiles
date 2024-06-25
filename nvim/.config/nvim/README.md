@@ -1,4 +1,3 @@
-# kickstart-modular.nvim
-
+based on kickstart-modular.nvim
 
 

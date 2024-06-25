@@ -7,6 +7,7 @@ require('lazy').setup({
   require 'plugins/oil',
 
   require 'plugins/neo-tree',
+
   require 'plugins/lazygit',
 
   require 'plugins/neogit',
@@ -16,6 +17,8 @@ require('lazy').setup({
   require 'plugins/which-key',
 
   require 'plugins/telescope',
+
+  require 'plugins/telescope-file-browser',
 
   require 'plugins/lspconfig',
 
