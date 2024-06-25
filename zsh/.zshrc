@@ -27,6 +27,7 @@ alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
+alias alle='nvim /Users/y/Documents/ovet/extr/alle.md'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/y/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/y/google-cloud-sdk/path.zsh.inc'; fi
