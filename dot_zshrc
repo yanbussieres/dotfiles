@@ -1,0 +1,28 @@
+# Aliases
+alias ls='lsd'
+alias gst='git status'
+##
+eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/sim-web.omp.json)"
+##
+source ~/.zplug/init.zsh
+
+zplug "zsh-users/zsh-history-substring-search"
+zplug "JanDeDobbeleer/oh-my-posh", as:command
+zplug "junegunn/fzf", \
+    use:zshrc
+zplug "b4b4r07/enhancd", at:v1
+zplug "stedolan/jq", \
+    rename-to:jq
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+# zplug 'dracula/zsh', as:theme
+zplug "agkozak/zsh-z"
+
+if ! zplug check --verbose; then
+    printf "Install? [Y/n]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load
