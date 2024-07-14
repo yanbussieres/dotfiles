@@ -6,6 +6,18 @@
       "type": "rprompt",
       "segments": [
         {
+          "type": "wakatime",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#ffffff",
+          "background": "#007acc",
+          "properties": {
+            "url": "https://wakatime.com/api/v1/users/current/summaries?start=today&end=today&api_key=waka_c96076cc-fb5c-4476-9a57-da3f8fd80612",
+            "cache_timeout": 10,
+            "http_timeout": 500
+          }
+        },
+        {
           "foreground": "#E06C75",
           "properties": {
             "time_format": "15:04:05"
@@ -13,6 +25,30 @@
           "style": "plain",
           "template": " {{ .CurrentDate | date .Format }} ",
           "type": "time"
+        },
+        {
+          "type": "gcp",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#ffffff",
+          "background": "#47888d",
+          "template": "  {{.Project}} :: {{.Account}} "
+        },
+        {
+          "type": "firebase",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#ffffff",
+          "background": "#FFA000",
+          "template": " 󰥧 {{ .Project }}"
+        },
+        {
+          "type": "node",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#ffffff",
+          "background": "#6CA35E",
+          "template": "  {{ .Full }} "
         }
       ]
     },
@@ -59,14 +95,6 @@
           "background": "#ffffff",
           "foreground": "#422251",
           "template": "  {{ .Full }} "
-        },
-        {
-          "type": "firebase",
-          "style": "plain",
-          "powerline_symbol": "",
-          "foreground": "#ffffff",
-          "background": "#FFA000",
-          "template": " 󰥧 {{ .Project }}"
         },
         {
           "type": "status",
