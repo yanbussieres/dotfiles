@@ -1,71 +1,71 @@
-# Start configuration added by Zim install {{{
-#
-# User configuration sourced by interactive shells
-setopt HIST_IGNORE_ALL_DUPS
-bindkey -e
-WORDCHARS=${WORDCHARS//[\/]}
-zstyle ':zim:git' aliases-prefix 'g'
-zstyle ':zim:input' double-dot-expand yes
-zstyle ':zim:termtitle' hooks 'preexec' 'precmd'
-zstyle ':zim:termtitle:preexec' format '󱡄  ${${(A)=1}[1]}'
+# zim related:
+source $HOME/.zsh/.zshrc_zim
 
-zstyle ':zim:termtitle' hooks 'preexec' 'precmd' 
+##### OH-MY-POSH #####
+if [ "$TERM_PROGRAM" = "WezTerm" ]; then
+  eval "$(oh-my-posh init zsh --config $HOME/.config/.yb-theme.omp.json)"
+else
+  eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/pure.omp.json)"
+fi
 
 
-
-# Disable automatic widget re-binding on each precmd. This can be set when
-# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-
-# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
-
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+##### ATUIN #####
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"
 
 
-# ------------------
-# Initialize modules
-# ------------------
-
-ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
-# Download zimfw plugin manager if missing.
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  if (( ${+commands[curl]} )); then
-    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-  else
-    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+##### YAZI #####
+function yy() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    cd -- "$cwd"
   fi
-fi
-# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-  source ${ZIM_HOME}/zimfw.zsh init -q
-fi
-# Initialize modules.
-source ${ZIM_HOME}/init.zsh
+  rm -f -- "$tmp"
+}
 
-# ------------------------------
-# Post-init module configuration
-# ------------------------------
-# zsh-history-substring-search
-#
-zmodload -F zsh/terminfo +p:terminfo
-eval "$(oh-my-posh init zsh --config ~/.config/.yb-theme.omp.json)"
+##### MISE #####
+eval "$(~/.local/bin/mise activate zsh)"
 
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+##### GCLOUD #####
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/y/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/y/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/y/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/y/google-cloud-sdk/completion.zsh.inc'; fi
 
-. "$HOME/.atuin/bin/env"
+#####        GCLOUD      #####
+#####         NVM        #####
 
-eval "$(atuin init zsh)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+load-nvmrc() {
+  local nvmrc_path
+  nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version
+    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+    fi
+  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+##### NVM #####
+
