@@ -180,15 +180,59 @@
       "type": "prompt"
     },
     {
+      "alignment": "right",
+      "newline": false,
+      "segments": [
+        {
+          "foreground": "#81ff91",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "powerline",
+          "template": "<#cc7eda> \u007C </><#7eb8da>\ue718</> {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
+          "type": "node"
+        },
+        {
+          "type": "npm",
+          "style": "powerline",
+          "foreground": "#81ff91",
+          "template": "<#cc7eda> \u007C </><#7eb8da>\ue71e </> {{ .Full }}"
+        },
+        {
+          "type": "dart",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#ffffff",
+          "background": "#06A4CE",
+          "template": "  {{ .Full }} "
+        },
+        {
+          "type": "elixir",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#ffffff",
+          "background": "#422251",
+          "template": "  {{ .Full }} "
+        },
+        {
+          "type": "flutter",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#ffffff",
+          "background": "#06A4CE",
+          "template": "  {{ .Full }} "
+        }
+      ],
+      "type": "rprompt"
+    },
+    {
       "alignment": "left",
       "newline": true,
       "segments": [
         {
           "background": "p:error-background",
           "foreground": "p:backgrond-color",
-          "style": "diamond",
-          "leading_diamond": "",
-          "trailing_diamond": "",
+          "style": "powerline",
           "template": "  ",
           "type": "root"
         },
