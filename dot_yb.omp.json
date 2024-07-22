@@ -8,13 +8,13 @@
     "cloud-text-azure": "#4285F4",
     "cloud-text-gcp": "#4285F4",
     "cloud-text-firebase": "#FFA000",
-    "error-background": "#dd0033",
+    "error-background": "#FF9192",
     "error-text": "#242424",
     "git-text": "#238636",
     "kubernetes-text": "#FFBB00",
     "talosctl-text": "#FF6C00",
     "symbol-color": "#ffffff",
-    "timer-text": "#dd0033"
+    "timer-text": "#FFAA93"
   },
   "blocks": [
     {
@@ -124,7 +124,15 @@
           "powerline_symbol": "",
           "template": "{{ if eq .Code 0 }}  {{ end }}",
           "type": "status"
-        },
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "type": "rprompt",
+      "segments": [
         {
           "background": "p:error-background",
           "foreground": "p:error-text",
@@ -132,8 +140,7 @@
           "template": "{{ if ne .Code 0 }}  {{ .Code }}{{ if (ne (reason .Code) (toString .Code)) }} - {{ reason .Code }}{{else}}{{ end }} {{ end }}",
           "type": "status"
         }
-      ],
-      "type": "prompt"
+      ]
     },
     {
       "alignment": "left",
@@ -230,9 +237,7 @@
         {
           "background": "p:error-background",
           "foreground": "p:backgrond-color",
-          "style": "diamond",
-          "leading_diamond": "",
-          "trailing_diamond": "",
+          "style": "powerline",
           "template": "  ",
           "type": "root"
         },
