@@ -1,5 +1,5 @@
-# This is not sourced during shell startup, and it's only used to configure the
-# zimfw plugin manager.
+# not sourced during shell startup
+#  only used to configure zimfw plugin manager.
 
 # Sets sane Zsh built-in environment options.
 zmodule environment
@@ -7,32 +7,17 @@ zmodule environment
 zmodule git
 # Applies correct bindkeys for input events.
 zmodule input
-# Sets a custom terminal title.
 zmodule termtitle
-# Utility aliases and functions. Adds colour to ls, grep and less.
 zmodule utility
-zmodule wbingli/zsh-wakatime
-# Prompt
-#
+
 zmodule kiesman99/zim-zoxide
 zmodule fzf 
-# Completion
-#
+
+
 # Additional completion definitions for Zsh.
 zmodule ybussieres/zsh-completions --fpath src
-# zmodule /Users/y/.zsh/zsh-autosuggestions
-# Enables and configures smart and extensive tab completion.
-# completion must be sourced after all modules that add completion definitions.
 zmodule completion
 
-#
-# Modules that must be initialized last
-#
-
-# Fish-like syntax highlighting for Zsh.
-# zsh-users/zsh-syntax-highlighting must be sourced after completion
+# Fish-like highlighting 
 zmodule zsh-users/zsh-syntax-highlighting
-# zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
-# zmodule zsh-users/zsh-history-substring-sarch
-zmodule zsh-users/zsh-autosuggestions
 
