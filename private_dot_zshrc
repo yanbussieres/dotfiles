@@ -1,3 +1,4 @@
+export EDITOR="nvim"
 # zimfw
 source $HOME/.zsh/.zshrc_zim
 #----------------------------#
