@@ -128,9 +128,7 @@
         {
           "background": "p:error-background",
           "foreground": "p:error-text",
-          "leading_diamond": " ",
-          "trailing_diamond": "",
-          "style": "diamond",
+          "style": "powerline",
           "template": "{{ if ne .Code 0 }}  {{ .Code }}{{ if (ne (reason .Code) (toString .Code)) }} - {{ reason .Code }}{{else}}{{ end }} {{ end }}",
           "type": "status"
         }
