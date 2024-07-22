@@ -3,11 +3,11 @@ export EDITOR="nvim"
 source $HOME/.zsh/.zshrc_zim
 #----------------------------#
 ##### OH-MY-POSH #####
-if [ "$TERM_PROGRAM" = "WezTerm" ]; then
-  eval "$(oh-my-posh init zsh --config $HOME/.yb.omp.json)"
-else
-  eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/pure.omp.json)"
-fi
+# if [ "$TERM_PROGRAM" = "WezTerm" ]; then
+eval "$(oh-my-posh init zsh --config ~/.yb.omp.json)"
+# else
+  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/pure.omp.json)"
+# fi
 ##### OH-MY-POSH #####
 #----------------------------#
 ##### ATUIN #####
