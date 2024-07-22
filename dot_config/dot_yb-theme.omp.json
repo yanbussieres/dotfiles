@@ -18,21 +18,12 @@
           }
         },
         {
-          "foreground": "#E06C75",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "plain",
-          "template": " {{ .CurrentDate | date .Format }} ",
-          "type": "time"
-        },
-        {
           "type": "gcp",
           "style": "powerline",
           "powerline_symbol": "",
           "foreground": "#ffffff",
           "background": "#47888d",
-          "template": "  {{.Project}} :: {{.Account}} "
+          "template": "  {{.Project}}:{{.Account}} "
         },
         {
           "type": "firebase",
@@ -95,12 +86,6 @@
           "background": "#ffffff",
           "foreground": "#422251",
           "template": "  {{ .Full }} "
-        },
-        {
-          "type": "status",
-          "style": "plain",
-          "foreground": "#C94A16",
-          "template": "x "
         }
       ]
     },
@@ -117,5 +102,10 @@
       ],
       "newline": true
     }
-  ]
+  ],
+  "transient_prompt": {
+    "background": "transparent",
+    "foreground": "#ffffff",
+    "template": "{{ .Shell }}> "
+  }
 }
