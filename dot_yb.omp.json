@@ -4,8 +4,6 @@
   "console_title_template": "{{ if or .Root .Segments.Git.RepoName }}[ {{ if .Root }}Admin{{ end }}{{ if and .Root .Segments.Git.RepoName }}@{{ end }}{{ if .Segments.Git.RepoName }}{{ .Segments.Git.RepoName }}{{ end }} ]{{ end }} {{ .Folder }}",
   "palette": {
     "background-color": "transparent",
-    "cloud-text-amazon": "#4285F4",
-    "cloud-text-azure": "#4285F4",
     "cloud-text-gcp": "#4285F4",
     "cloud-text-firebase": "#FFA000",
     "error-background": "#FF9192",
@@ -21,63 +19,6 @@
       "alignment": "left",
       "newline": false,
       "segments": [
-        {
-          "background": "p:background-color",
-          "foreground": "p:timer-text",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": " <p:symbol-color></> {{ dateInZone .Format .CurrentDate \"UTC\" }} ",
-          "type": "time"
-        },
-        {
-          "background": "p:background-color",
-          "foreground": "p:kubernetes-text",
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": "<p:symbol-color></> {{.Context}}{{if .Namespace}}  {{.Namespace}}{{end}}",
-          "type": "kubectl"
-        },
-        {
-          "background": "p:background-color",
-          "foreground": "p:talosctl-text",
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": "<p:symbol-color>󱃾</> {{.Context}}",
-          "type": "talosctl"
-        },
-        {
-          "background": "p:background-color",
-          "foreground": "p:cloud-text-amazon",
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": " <p:symbol-color></> {{.Profile}}{{if .Region}}  {{.Region}}{{end}}",
-          "type": "aws"
-        },
-        {
-          "background": "p:background-color",
-          "foreground": "p:cloud-text-azure",
-          "properties": {
-            "source": "cli"
-          },
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": " <p:symbol-color></> {{ .Name }}",
-          "type": "az"
-        },
-        {
-          "background": "p:background-color",
-          "foreground": "p:cloud-text-azure",
-          "properties": {
-            "source": "pwsh"
-          },
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": " <p:symbol-color></> (PS) {{ .Name }}",
-          "type": "az"
-        },
         {
           "background": "p:background-color",
           "foreground": "p:cloud-text-gcp",
@@ -126,11 +67,30 @@
           "type": "status"
         }
       ],
+      "type": "rprompt"
+    },
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "style": "powerline",
+          "background": "p:background-color",
+          "foreground": "p:symbol-color",
+          "powerline_symbol": "",
+          "properties": {
+            "style": "full",
+            "mapped_locations": {
+              "/Users/y/Dev/Ovet": "󰩄 "
+            }
+          },
+          "type": "path"
+        }
+      ],
       "type": "prompt"
     },
     {
       "alignment": "left",
-      "newline": true,
+      "newline": false,
       "type": "rprompt",
       "segments": [
         {
@@ -141,48 +101,6 @@
           "type": "status"
         }
       ]
-    },
-    {
-      "alignment": "left",
-      "newline": true,
-      "segments": [
-        {
-          "background": "p:background-color",
-          "foreground": "p:timer-text",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": " <p:symbol-color></> {{ .CurrentDate | date .Format }} ",
-          "type": "time"
-        },
-        {
-          "background": "p:background-color",
-          "foreground": "p:symbol-color",
-          "properties": {
-            "folder_separator_icon": "/",
-            "style": "folder"
-          },
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": " {{ path .Path .Location }} ",
-          "type": "path"
-        },
-        {
-          "background": "p:background-color",
-          "foreground": "p:git-text",
-          "properties": {
-            "fetch_stash_count": true,
-            "fetch_status": true
-          },
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": "{{ .HEAD }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} ",
-          "type": "git"
-        }
-      ],
-      "type": "prompt"
     },
     {
       "alignment": "right",

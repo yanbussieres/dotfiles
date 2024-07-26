@@ -17,8 +17,8 @@ eval "$(atuin init zsh)"
 #----------------------------#
 
 ##### YAZI #####
+local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 function yy() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
   yazi "$@" --cwd-file="$tmp"
   if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
     cd -- "$cwd"
@@ -73,3 +73,4 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 ##### NVM #####
 
+eval "$(gh copilot alias -- zsh)"
