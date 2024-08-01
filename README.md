@@ -1,6 +1,6 @@
 # 🏃‍♂️🏃‍➡️🏃‍♂️🏃‍♀️‍➡️
 
-## Vistion: 
+## Vision: 
 - cloud functions (sprinters) running until their task~s~ 
 - less possible cohesion between the sprinters
 - in doubt, add sprinters 
