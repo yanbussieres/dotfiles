@@ -17,73 +17,100 @@
   "blocks": [
     {
       "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#81ff91",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "",
+          "template": "{{if lt .PromptCount 4}}<#cc7eda> \u007C </><#7eb8da>\ue718</> {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}{{end}}",
+          "type": "node"
+        },
+        {
+          "type": "npm",
+          "style": "",
+          "foreground": "#81ff91",
+          "template": "{{if lt .PromptCount 4}}#cc9eda> \u007C </><#7eb8da>\ue71e </> {{ .Full }}{{end}} "
+        },
+        {
+          "type": "dart",
+          "style": "",
+          "powerline_symbol": "",
+          "foreground": "#ffffff",
+          "background": "#06A4CE",
+          "template": "  {{ .Full }} "
+        },
+        {
+          "type": "elixir",
+          "style": "",
+          "powerline_symbol": "",
+          "foreground": "#ffffff",
+          "background": "#422251",
+          "template": "  {{ .Full }} "
+        },
+        {
+          "type": "flutter",
+          "style": "",
+          "powerline_symbol": "",
+          "foreground": "#ffffff",
+          "background": "#06A4CE",
+          "template": "  {{ .Full }} "
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
       "newline": false,
       "segments": [
         {
           "background": "p:background-color",
           "foreground": "p:cloud-text-gcp",
-          "style": "powerline",
-          "powerline_symbol": "",
+          "style": "",
           "template": " <p:symbol-color></> {{ .Project }}",
-          "type": "gcp"
+          "type": "gcp",
+          "max-width": 3
         },
         {
           "background": "p:background-color",
           "foreground": "p:cloud-text-firebase",
-          "style": "powerline",
-          "powerline_symbol": "",
+          "style": "",
           "template": " <p:symbol-color>󰥧</> {{ .Project }}",
           "type": "firebase"
-        },
-        {
-          "background": "p:background-color",
-          "foreground": "p:git-text",
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": " <p:symbol-color></> {{ .RepoName }}",
-          "type": "git"
-        },
-        {
-          "background": "p:background-color",
-          "foreground": "p:timer-text",
-          "properties": {
-            "style": "austin",
-            "threshold": 1
-          },
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": " <p:symbol-color></> {{ .FormattedMs }}",
-          "type": "executiontime"
-        },
-        {
-          "background": "p:background-color",
-          "foreground": "p:symbol-color",
-          "properties": {
-            "always_enabled": true
-          },
-          "style": "powerline",
-          "powerline_symbol": "",
-          "template": "{{ if eq .Code 0 }}  {{ end }}",
-          "type": "status"
         }
       ],
       "type": "rprompt"
     },
     {
-      "alignment": "left",
+      "alignment": "right",
       "segments": [
         {
+          "type": "git",
           "style": "powerline",
-          "background": "p:background-color",
-          "foreground": "p:symbol-color",
           "powerline_symbol": "",
+          "foreground": "#193549",
+          "background": "#FFDA6E",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFDA6E{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}",
+            "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
+            "{{ if gt .Behind 0 }}#B388FB{{ end }}"
+          ],
+          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}",
           "properties": {
-            "style": "full",
-            "mapped_locations": {
-              "/Users/y/Dev/Ovet": "󰩄 "
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "untracked_modes": {
+              "/Users/user/Projects/oh-my-posh/": "no"
+            },
+            "source": "cli",
+            "mapped_branches": {
+              "feat/*": "🚀 ",
+              "bug/*": "🐛 "
             }
-          },
-          "type": "path"
+          }
         }
       ],
       "type": "prompt"
@@ -103,68 +130,21 @@
       ]
     },
     {
-      "alignment": "right",
-      "newline": false,
-      "segments": [
-        {
-          "foreground": "#81ff91",
-          "properties": {
-            "fetch_version": true
-          },
-          "style": "powerline",
-          "template": "<#cc7eda> \u007C </><#7eb8da>\ue718</> {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
-          "type": "node"
-        },
-        {
-          "type": "npm",
-          "style": "powerline",
-          "foreground": "#81ff91",
-          "template": "<#cc7eda> \u007C </><#7eb8da>\ue71e </> {{ .Full }}"
-        },
-        {
-          "type": "dart",
-          "style": "powerline",
-          "powerline_symbol": "",
-          "foreground": "#ffffff",
-          "background": "#06A4CE",
-          "template": "  {{ .Full }} "
-        },
-        {
-          "type": "elixir",
-          "style": "powerline",
-          "powerline_symbol": "",
-          "foreground": "#ffffff",
-          "background": "#422251",
-          "template": "  {{ .Full }} "
-        },
-        {
-          "type": "flutter",
-          "style": "powerline",
-          "powerline_symbol": "",
-          "foreground": "#ffffff",
-          "background": "#06A4CE",
-          "template": "  {{ .Full }} "
-        }
-      ],
-      "type": "rprompt"
-    },
-    {
       "alignment": "left",
       "newline": true,
       "segments": [
         {
-          "background": "p:error-background",
-          "foreground": "p:backgrond-color",
           "style": "powerline",
-          "template": "  ",
-          "type": "root"
-        },
-        {
           "background": "p:background-color",
-          "foreground": "p:git-text",
-          "style": "plain",
-          "template": "{{ if .Root }}{{ else }}<p:symbol-color> > </>{{ end }}",
-          "type": "text"
+          "foreground": "p:symbol-color",
+          "powerline_symbol": "",
+          "properties": {
+            "style": "full",
+            "mapped_locations": {
+              "/Users/y/Dev/Ovet": "󰩄 "
+            }
+          },
+          "type": "path"
         }
       ],
       "type": "prompt"
@@ -173,6 +153,6 @@
   "transient_prompt": {
     "background": "transparent",
     "foreground": "#523c3c",
-    "template": "\n---\n"
+    "template": "{{ .PromptCount }}> "
   }
 }

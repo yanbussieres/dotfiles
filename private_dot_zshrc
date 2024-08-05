@@ -73,4 +73,8 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 ##### NVM #####
 
+
 eval "$(gh copilot alias -- zsh)"
+alias ldev="export GCLOUD_PROJECT=ovet-3bbf5 \
+            export GCLOUD_LOCATION=us-central1 \ 
+            gcloud auth application-default login"
