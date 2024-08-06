@@ -141,7 +141,9 @@
           "properties": {
             "style": "full",
             "mapped_locations": {
-              "/Users/y/Dev/Ovet": "󰩄 "
+              "/Users/y/Dev/Ovet": "󰩄 ",
+              "/Users/y/Dev/Ovet/sprinters/": "󰑮󰑮󰑮",
+              "/Users/y/Dev/Ovet/team/": " "
             }
           },
           "type": "path"

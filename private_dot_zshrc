@@ -4,7 +4,7 @@ source $HOME/.zsh/.zshrc_zim
 #----------------------------#
 ##### OH-MY-POSH #####
 # if [ "$TERM_PROGRAM" = "WezTerm" ]; then
-eval "$(oh-my-posh init zsh --config ~/.yb.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.yb-min.omp.json)"
 # else
   # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/pure.omp.json)"
 # fi
@@ -75,6 +75,10 @@ load-nvmrc
 
 
 eval "$(gh copilot alias -- zsh)"
+eval "$(direnv hook zsh)"
 alias ldev="export GCLOUD_PROJECT=ovet-3bbf5 \
             export GCLOUD_LOCATION=us-central1 \ 
             gcloud auth application-default login"
+
+
+alias mux=tmuxinator
