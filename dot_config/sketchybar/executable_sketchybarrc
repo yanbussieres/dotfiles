@@ -42,7 +42,7 @@ sketchybar --default "${default[@]}"
 sketchybar --add item chevron left \
            --set chevron icon= label.drawing=off \
            --add item front_app left \
-           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+           --set front_app icon.drawing=on script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
@@ -64,7 +64,7 @@ sketchybar --add       event           spotify_change $SPOTIFY_EVENT      \
                                        popup.horizontal=on                \
                                        popup.align=right                \
                                        icon.drawing=off                 \
-                                background.color=0x44ffffff \
+                                label.color=0xFF386648 \
            --add       item            spotify.back popup.spotify.name    \
            --set       spotify.back    icon=                      \
                                        icon.padding_left=5                \
