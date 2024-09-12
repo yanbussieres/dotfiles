@@ -3,27 +3,30 @@ program = "/bin/zsh"
 args = ["-l", "-c", "tmux attach || tmux new -s 'main'"]
 
 [font]
-size = 13.5
+size = 14.5
 
 [scrolling]
 history = 50000
 multiplier = 3
 
-[font.bold]
-family = "VictorMono Nerd Font"
-style = "SemiBold Oblique"
-
-[font.bold_italic]
-family = "VictorMono Nerd Font"
-style = "Heavy Italic"
-
-[font.italic]
-family = "VictorMono Nerd Font"
-style = "Thin Oblique"
-
 [font.normal]
-family = "VictorMono Nerd Font"
-style = "Medium"
+family = "MesloLGS NF"
+
+# [font.bold]
+# family = "VictorMono Nerd Font"
+# style = "SemiBold Oblique"
+#
+# [font.bold_italic]
+# family = "VictorMono Nerd Font"
+# style = "Heavy Italic"
+#
+# [font.italic]
+# family = "VictorMono Nerd Font"
+# style = "Thin Oblique"
+#
+# [font.normal]
+# family = "VictorMono Nerd Font"
+# style = "Medium"
 
 
 [window]
