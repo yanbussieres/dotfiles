@@ -1,46 +1,28 @@
-
-# Available commands: https://nikitabobko.github.io/AeroSpace/commands
-after-login-command = []
 on-focus-changed = ['move-mouse window-lazy-center']
-# You can use it to add commands that run after AeroSpace startup.
-# 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
+# after-startup-command = ['exec-and-forget sketchybar']
+# exec-on-workspace-change = ['/bin/bash', '-c',
+#     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+# ]
 
-after-startup-command = ['exec-and-forget sketchybar']
-
-
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
-]
-# Start AeroSpace at logi
 start-at-login = true
-
-# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+# https://nikitabobko.github.io/AeroSpace/guide#normalization
+# https://nikitabobko.github.io/AeroSpace/guide#layouts
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
-
-# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
-# The 'accordion-padding' specifies the size of accordion padding
-# You can set 0 to disable the padding feature
-accordion-padding = 60
-
-# Possible values: tiles|accordion
+accordion-padding = 20 
+#  tiles|accordion
 default-root-container-layout = 'tiles'
-
-# Possible values: horizontal|vertical|auto
 # 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
 #               tall monitor (anything higher than wide) gets vertical orientation
 default-root-container-orientation = 'auto'
-
-# Possible values: (qwerty|dvorak)
-# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 key-mapping.preset = 'qwerty'
-
 [gaps]
 inner.horizontal = 6 
 inner.vertical = 6 
-outer.top = [ { monitor."lg" = 32 }, { monitor."Smart M80C" = 32 }, 8]
+# outer.top = [ { monitor."lg" = 24 }, { monitor."Smart M80C" = 24 }, 3]
 outer.left = 3
+outer.top = 3
 outer.bottom = 3
 outer.right = 3
 
@@ -50,7 +32,14 @@ outer.right = 3
 # 2 =  'Smart M80C'
 # O = '^built-in retina display$'  # Case insensitive regex match
 
-
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+# if.app-name-regex-substring = 'settings'
+# if.window-title-regex-substring = 'substring'
+# if.workspace = 'workspace-name'
+if.during-aerospace-startup = true
+check-further-callbacks = true
+run = ['layout floating', 'move-node-to-workspace W']  # The callback itself
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.main.binding]
 cmd-h = [] # Disable "hide application"
@@ -65,6 +54,7 @@ alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
+# aerospace focus-monitor down 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
@@ -82,7 +72,6 @@ alt-2 = 'workspace 2'
 alt-o = 'workspace O' # In your config, you can drop workspace bindings that you don't need
 alt-p = 'workspace P'
 alt-w = 'workspace W'
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
