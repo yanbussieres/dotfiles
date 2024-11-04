@@ -1,6 +1,5 @@
 on-focus-changed = ['move-mouse window-lazy-center']
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-# after-startup-command = ['exec-and-forget sketchybar']
 # exec-on-workspace-change = ['/bin/bash', '-c',
 #     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 # ]
@@ -27,25 +26,31 @@ outer.bottom = 3
 outer.right = 3
 
 
-# [workspace-to-monitor-force-assignment]
-# 1 = 1                       # Main monitor
-# 2 =  'Smart M80C'
-# O = '^built-in retina display$'  # Case insensitive regex match
 
 [[on-window-detected]]
-if.app-id = 'net.kovidgoyal.kitty'
-# if.app-name-regex-substring = 'settings'
-# if.window-title-regex-substring = 'substring'
-# if.workspace = 'workspace-name'
-if.during-aerospace-startup = true
-check-further-callbacks = true
-run = ['layout floating', 'move-node-to-workspace W']  # The callback itself
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+if.app-id = 'com.apple.systempreferences'
+run = ['layout floating']  # The callback itself
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = ['layout floating']  # The callback itself
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = ['layout floating']  # The callback itself
+
+[[on-window-detected]]
+
+if.app-id = 'com.scrintal.electron'
+run = ['layout floating']  # The callback itself
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = ['layout floating']  # The callback itself
+
+
 [mode.main.binding]
 cmd-h = [] # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-shift-space = 'layout accordion vertical'
+alt-shift-space = ['layout tiles accordion']
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
