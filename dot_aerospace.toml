@@ -36,6 +36,9 @@ run = ['layout floating']  # The callback itself
 [[on-window-detected]]
 if.app-id = 'com.apple.iphonesimulator'
 run = ['layout floating']  # The callback itself
+[[on-window-detected]]
+if.app-id = 'com.raycast.macos'
+run = ['layout floating']  # The callback itself
 
 [[on-window-detected]]
 
