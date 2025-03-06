@@ -4,7 +4,6 @@ alias nvim='~/nvim-macos-arm64/bin/nvim'
 export VISUAL=~/nvim-macos-arm64/bin/nvim
 export EDITOR=~/nvim-macos-arm64/bin/nvim
 # Set up fzf key bindings and fuzzy completion
-
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
@@ -59,7 +58,6 @@ prompt pure
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-source <(fzf --zsh)
 
 alias ls='eza'
 alias zshs='source ~/.zshrc'
@@ -74,8 +72,6 @@ rv ~/.cache/nvim'
 
 eval "$(zoxide init zsh)"
 
-. "$HOME/.atuin/bin/env"
-eval "$(atuin init zsh --disable-up-arrow)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -91,10 +87,22 @@ export NVM_DIR="$HOME/.nvm"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+
+source <(fzf --zsh)
+
+export FZF_CTRL_R_COMMAND=""
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'tree -C {}'"
+
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
 . "/Users/y/.deno/env"
 
+
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh --disable-up-arrow)"
 
 source /Users/y/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
