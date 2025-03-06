@@ -2,14 +2,34 @@
 startup_command = "nvim"
 preview_command = "eza --all --git --icons --color=always {}"
 
+[[session]]
+name = "Home 󱂵 "
+path = "~/"
+preview_command = "eza --all --git --icons --color=always {}"
 
 [[session]]
-name = "Downloads 📥"
+name = "Downloads  "
 path = "~/Downloads"
-startup_command = "ls"
+startup_command = "yazi"
 
 [[session]]
-name = "tmux config"
-path = "~/c/dotfiles/.config/tmux"
-preview_command = "bat --color=always ~/c/dotfiles/.config/tmux/tmux.conf"
+name = "ovet admin  "
+path = "~/Repos/ovet-admin/"
+preview_command = "bat --color=always ~/dotfiles/.config/tmux/tmux.conf"
+
+[[session]]
+name = "Repos 󰊢 "
+path = "~/Repos/"
+preview_command = "eza --all --git --icons --color=always {}"
+
+[[session]]
+name = "tmux "
+path = "~/dotfiles/.config/tmux"
+preview_command = "bat --color=always ~/dotfiles/.config/tmux/tmux.conf"
 startup_command = "nvim tmux.conf"
+
+[[sesh]]
+name = "sesh "
+path = "~/dotfiles/.config/sesh"
+preview_command = "bat --color=always ~/dotfiles/.config/tmux/tmux.conf"
+startup_command = "nvim sesh.toml"

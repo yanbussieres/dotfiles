@@ -5,10 +5,10 @@ export VISUAL=~/nvim-macos-arm64/bin/nvim
 export EDITOR=~/nvim-macos-arm64/bin/nvim
 # Set up fzf key bindings and fuzzy completion
 
-#compdef docker
-compdef _docker docker
-
-# zsh completion for docker                               -*- shell-script -*-
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/y/.docker/completions $fpath)
@@ -24,6 +24,12 @@ zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!
 
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
+tmux () {
+   if [ "$#" -eq 0 ]
+      then command tmux new-session -s 'MAIN'
+      else command tmux "$@"
+   fi
+   }
 
 function sesh-sessions() {
   {
