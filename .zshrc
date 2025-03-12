@@ -1,9 +1,11 @@
 
 alias nvim='~/nvim-macos-arm64/bin/nvim'
+alias nv='~/nvim-macos-arm64/bin/nvim'
 
-export VISUAL=~/nvim-macos-arm64/bin/nvim
-export EDITOR=~/nvim-macos-arm64/bin/nvim
-# Set up fzf key bindings and fuzzy completion
+export VISUAL=vim
+export EDITOR=vim
+
+
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
@@ -60,6 +62,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
 alias ls='eza'
+alias lg='lazygit'
 alias zshs='source ~/.zshrc'
 alias zshe='nvim ~/.zshrc'
 
