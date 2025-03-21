@@ -8,6 +8,12 @@ path = "~/"
 preview_command = "eza --all --git --icons --color=always {}"
 
 [[session]]
+name = "Notes  "
+path = "~/Vaults/2025/"
+preview_command = "eza --all --git --icons --color=always {}"
+startup_command = "nvim $(date +%m)"
+
+[[session]]
 name = "Downloads  "
 path = "~/Downloads"
 startup_command = "yazi"
