@@ -1,14 +1,8 @@
-alias gg="glow /Users/y/Vaults/work/25/03-13.md"
+alias nvim='nvim'
+alias nv='nvim'
 
-
-
-alias gg="glow /Users/y/Vaults/work/25/03-13.md"
-
-alias nvim='~/nvim-macos-arm64/bin/nvim'
-alias nv='~/nvim-macos-arm64/bin/nvim'
-
-export VISUAL=vim
-export EDITOR=vim
+export VISUAL=nvim
+export EDITOR=nvim
 bindkey -e
 
 autoload -U edit-command-line
@@ -53,18 +47,20 @@ zle     -N             sesh-sessions
 bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
-autoload -U promptinit; promptinit
+# autoload -U promptinit; promptinit
 
 # optionally define some options
-PURE_CMD_MAX_EXEC_TIME=10
+# PURE_CMD_MAX_EXEC_TIME=10
 
-zstyle :prompt:pure:path color yellow 
-zstyle ':prompt:pure:prompt:*' color cyan
-zstyle :prompt:pure:git:stash show yes
-prompt pure
+# zstyle :prompt:pure:path color yellow 
+# zstyle ':prompt:pure:prompt:*' color cyan
+# zstyle :prompt:pure:git:stash show yes
+# prompt pure
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+
+eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/json.omp.json)"
 
 alias sp='npx supabase'
 alias dk='npx drizzle-kit'
@@ -87,7 +83,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-. "$HOME/.local/bin/env"
 
 
 # bun completions
@@ -106,15 +101,11 @@ export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'tree -C {}'"
 
-eval "$(uv generate-shell-completion zsh)"
-eval "$(uvx --generate-shell-completion zsh)"
-. "/Users/y/.deno/env"
+# eval "$(uv generate-shell-completion zsh)"
+# eval "$(uvx --generate-shell-completion zsh)"
 
 
-. "$HOME/.atuin/bin/env"
-eval "$(atuin init zsh --disable-up-arrow)"
 
-source /Users/y/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
@@ -328,11 +319,5 @@ _glow()
     fi
 }
 
-# don't run the completion function when being source-ed or eval-ed
-if [ "$funcstack[1]" = "_glow" ]; then
-    _glow
-fi
 
 
-# Added by Windsurf
-export PATH="/Users/y/.codeium/windsurf/bin:$PATH"

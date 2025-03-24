@@ -1,5 +1,5 @@
 [general]
-import = ["~/.config/alacritty/cyberdream-light.toml"]
+import = ["~/.config/alacritty/cyberdream.toml"]
 live_config_reload = true
 
 [env]
